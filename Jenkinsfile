@@ -65,7 +65,7 @@ spec:
       steps {
         input message:'Approve deployment?'
         container('tools') {
-          dir("argocd-demo-deploy") {
+          dir("argo-demo-deploy") {
             sh "cd ./prod && kustomize edit set image invaleed/argo-demo:${env.GIT_COMMIT}"
             sh "git commit -am 'Publish new version' && git push || echo 'no changes'"
           }
