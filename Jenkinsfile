@@ -22,7 +22,7 @@ pipeline {
           sh "git clone https://$GIT_CREDS_USR:$GIT_CREDS_PSW@github.com/invaleed/argo-demo-deploy.git"
           sh "git config --global user.email 'ramadoni.ashudi@gmail.com'"
 
-          dir("argocd-demo-deploy") {
+          dir("argo-demo-deploy") {
             sh "cd ./e2e && kustomize edit set image invaleed/argo-demo:${env.GIT_COMMIT}"
             sh "git commit -am 'Publish new version' && git push || echo 'no changes'"
           }
